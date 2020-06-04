@@ -1,0 +1,41 @@
+name: "Kubernetes yaml validation by conftest"
+description: "Validate Kubernetes manifests by using conftest"
+author: "makocchi-git"
+inputs: 
+  file:
+    description: "File or directory to validate"
+    default: "."
+    required: false
+  output:
+    description: "Output format for conftest results - valid options are: [stdout json tap table]"
+    default: "stdout"
+    required: false
+  policy:
+    description: "Path to the Rego policy files directory"
+    default: "/policy"
+    required: false
+  trace:
+    description: "Enable more verbose trace output for rego queries"
+    default: false
+    required: false
+  comment:
+    description: "Send comment to pull requests"
+    default: true
+    required: false
+  token:
+    description: "Github token for api. This is required if comment is true"
+    default: ""
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.files }}
+    - ${{ inputs.output }}
+    - ${{ inputs.policy }}
+    - ${{ inputs.trace }}
+    - ${{ inputs.comment }}
+    - ${{ inputs.token }}
+branding:
+  icon: "check"
+  color: "blue"
