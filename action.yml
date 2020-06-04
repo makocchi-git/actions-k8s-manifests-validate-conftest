@@ -30,7 +30,7 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.files }}
+    - ${{ inputs.file }}
     - ${{ inputs.output }}
     - ${{ inputs.policy }}
     - ${{ inputs.trace }}
