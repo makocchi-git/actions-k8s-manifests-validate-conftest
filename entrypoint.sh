@@ -26,7 +26,7 @@ cd ${GITHUB_WORKSPACE}/${WORKING_DIR}
 set +e
 
 # exec conftest
-CMD="/usr/local/bin/conftest test -p ${POLICY} -o ${OUTPUT} --trace=${TRACE} ${FILE}"
+CMD="/usr/local/bin/conftest test --no-color -p ${POLICY} -o ${OUTPUT} --trace=${TRACE} ${FILE}"
 OUTPUT=$(sh -c "${CMD}" 2>&1)
 SUCCESS=$?
 
