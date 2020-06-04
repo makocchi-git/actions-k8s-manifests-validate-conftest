@@ -33,6 +33,9 @@ SUCCESS=$?
 set -e
 
 # let's log command
+echo "--- file ---"
+ls -l ${FILE}
+echo "------"
 echo "executed: $CMD"
 echo "return code: ${SUCCESS}"
 
