@@ -22,10 +22,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: validate manifests in dir1 and dir2
+      - name: validate manifest-dir
         uses: makocchi-git/actions-k8s-manifests-validate-conftest@1.0.0
         with:
           file: manifest-dir
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Using custom policies
+
+Default [kubernetes policies](https://github.com/instrumenta/policies/tree/master/kubernetes) are installed to `/policy` in the working container.  
+If you want to use your own policies, commit your rego files into any directory and set it's path into `policy` parameter.
+
+```yaml
+     # use policy/your_awesome_regos as your custom policy directory
+      - name: validate manifest-dir
+        uses: makocchi-git/actions-k8s-manifests-validate-conftest@1.0.0
+        with:
+          file: manifest-dir
+          policy: policy/your_awesome_regos
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
