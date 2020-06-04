@@ -35,8 +35,8 @@ Default [kubernetes policies](https://github.com/instrumenta/policies/tree/maste
 If you want to use your own policies, commit your rego files into any directory and set it's path into `policy` parameter.
 
 ```yaml
-     # use policy/your_awesome_regos as your custom policy directory
-      - name: validate manifest-dir
+      # use policy/your_awesome_regos as your custom policy directory
+      - name: validate manifest-dir with custom policies
         uses: makocchi-git/actions-k8s-manifests-validate-conftest@1.0.0
         with:
           file: manifest-dir
