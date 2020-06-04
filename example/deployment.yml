@@ -13,5 +13,20 @@ spec:
         app: example
     spec:
       containers:
-      - image: makocchi/docker-nginx-hostname:latest
+      - image: makocchi/docker-nginx-hostname:0.1.0
         name: docker-nginx-hostname
+        securityContext:
+          runAsUser: 10001
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - all
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1G"
+          requests:
+            cpu: "1"
+            memory: "1G"
