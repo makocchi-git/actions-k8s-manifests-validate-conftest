@@ -1,6 +1,6 @@
 # Validate Kubernetes manifests by conftest
 
-[<img src="https://github.com/makocchi-git/actions-k8s-manifests-validate-conftest/workflows/Perform checks/badge.svg"/>](https://github.com/makocchi-git/actions-k8s-manifests-validate/actions)
+[<img src="https://github.com/makocchi-git/actions-k8s-manifests-validate-conftest/workflows/Perform checks/badge.svg"/>](https://github.com/makocchi-git/actions-k8s-manifests-validate-conftest/actions)
 
 Validate [Kubernetes](https://github.com/kubernetes/kubernetes) manifests in your repository.  
 This action uses [conftest](https://github.com/open-policy-agent/conftest) for validating.
@@ -29,7 +29,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-### Using custom policies
+### Using custom policies in your repository
 
 Default [kubernetes policies](https://github.com/instrumenta/policies/tree/master/kubernetes) are installed to `/policy` in the working container.  
 If you want to use your own policies, commit your rego files into any directory and set it's path into `policy` parameter.
@@ -37,10 +37,25 @@ If you want to use your own policies, commit your rego files into any directory 
 ```yaml
       # use policy/your_awesome_regos as your custom policy directory
       - name: validate manifest-dir with custom policies
-        uses: makocchi-git/actions-k8s-manifests-validate-conftest@1.0.0
+        uses: makocchi-git/actions-k8s-manifests-validate-conftest@1.1.0
         with:
           file: manifest-dir
           policy: policy/your_awesome_regos
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+### Using external custom policies
+
+You can use external custom policies for validation.
+
+```yaml
+      # policies will download from github.com/makocchi-git/sample-kubernetes-rego-policy before validation
+      - name: validate manifest-dir with external custom policies
+        uses: makocchi-git/actions-k8s-manifests-validate-conftest@1.1.0
+        with:
+          file: manifest-dir
+          update: github.com/makocchi-git/sample-kubernetes-rego-policy
+          policy: policy/your_awesome_regos # this parameter will be ignored
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 

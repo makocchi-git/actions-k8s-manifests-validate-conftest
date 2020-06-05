@@ -27,8 +27,8 @@ cd ${GITHUB_WORKSPACE}/${WORKING_DIR}
 set +e
 
 if [ ${UPDATE} != "" ]; then
-	# Use ".policy" for download directory (ignore user setting)
-	POLICY=".policy"
+	# Use "/.policy" for download directory (ignore user setting)
+	POLICY="/.policy"
 	# Add --update args
 	UPDATE="--update ${UPDATE}"
 fi
