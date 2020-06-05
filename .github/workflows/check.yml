@@ -14,4 +14,4 @@ jobs:
         docker build -t makocchi/actions-k8s-manifests-validate-conftest:${{ github.sha }} .
     - name: Run check
       run: |
-        docker run -v ${PWD}/example:/example makocchi/actions-k8s-manifests-validate-conftest:${{ github.sha }} "/example" "stdout" "/policy" "false" "false" ""
+        docker run -v ${PWD}/example:/example makocchi/actions-k8s-manifests-validate-conftest:${{ github.sha }} "/example" "stdout" "/policy" "false" "" "false" ""
