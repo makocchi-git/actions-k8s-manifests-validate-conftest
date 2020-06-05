@@ -18,6 +18,10 @@ inputs:
     description: "Enable more verbose trace output for rego queries"
     default: false
     required: false
+  update:
+    description: "A list of urls can be provided to the update flag, which will download before the tests run"
+    default: ""
+    required: false
   comment:
     description: "Send comment to pull requests"
     default: true
@@ -34,6 +38,7 @@ runs:
     - ${{ inputs.output }}
     - ${{ inputs.policy }}
     - ${{ inputs.trace }}
+    - ${{ inputs.update }}
     - ${{ inputs.comment }}
     - ${{ inputs.token }}
 branding:

@@ -9,8 +9,9 @@ FILE=$1
 OUTPUT=$2
 POLICY=$3
 TRACE=$4
-COMMENT=$5
-GITHUB_TOKEN=$6
+UPDATE=$5
+COMMENT=$6
+GITHUB_TOKEN=$7
 
 # ------------------------
 # Vars
@@ -25,8 +26,15 @@ cd ${GITHUB_WORKSPACE}/${WORKING_DIR}
 
 set +e
 
+if [ ${UPDATE} != "" ]; then
+	# Use ".policy" for download directory (ignore user setting)
+	POLICY=".policy"
+	# Add --update args
+	UPDATE="--update ${UPDATE}"
+fi
+
 # exec conftest
-CMD="/usr/local/bin/conftest test --no-color -p ${POLICY} -o ${OUTPUT} --trace=${TRACE} ${FILE}"
+CMD="/usr/local/bin/conftest test --no-color -p ${POLICY} -o ${OUTPUT} --trace=${TRACE} ${UPDATE} ${FILE}"
 OUTPUT=$(sh -c "${CMD}" 2>&1)
 SUCCESS=$?
 
