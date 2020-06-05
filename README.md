@@ -61,12 +61,13 @@ You can use external custom policies for validation.
 
 ### Input parameters
 
-| Parameter  | Description                                                                     | Default   |
-| ---------- | ------------------------------------------------------------------------------- | --------- |
-| `file`     | File or directory to validate                                                   | `.`       |
-| `output`   | Output format for conftest results - valid options are: [stdout json tap table] | `stdout`  |
-| `policy`   | Path to the Rego policy files directory                                         | `/policy` |
-| `trace`    | Enable more verbose trace output for rego queries                               | `false`   |
-| `comment`  | Write validation details to pull request comments                               | `true`    |
-| `token`    | Github token for api. This is required if `comment` is true                     | `""`      |
+| Parameter  | Description                                                                                 | Default   |
+| ---------- | ------------------------------------------------------------------------------------------- | --------- |
+| `file`     | File or directory to validate                                                               | `.`       |
+| `output`   | Output format for conftest results - valid options are: [stdout json tap table]             | `stdout`  |
+| `policy`   | Path to the Rego policy files directory                                                     | `/policy` |
+| `trace`    | Enable more verbose trace output for rego queries                                           | `false`   |
+| `update`   | A list of urls can be provided to the update flag, which will download before the tests run | `""`      |
+| `comment`  | Write validation details to pull request comments                                           | `true`    |
+| `token`    | Github token for api. This is required if `comment` is true                                 | `""`      |
 
