@@ -1,4 +1,4 @@
-FROM makocchi/kmlinters:0.1.1
+FROM makocchi/kmlinters:0.2.0
 
 COPY entrypoint.sh /entrypoint.sh
 
